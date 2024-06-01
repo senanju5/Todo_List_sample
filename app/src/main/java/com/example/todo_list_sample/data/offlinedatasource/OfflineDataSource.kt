@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class OfflineDataSource() {
-        suspend fun getToDos(context: Context): List<ToDo> {
+        suspend fun getToDos(context: Context): Flow<List<ToDo>> {
         return   ToDoDataBase.getDataBae(context).getToDoDao().getAllToDo()
     }
     suspend fun insertToDo(toDo: ToDo, context: Context) {

@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.todo_list_sample.data.model.ToDo
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ToDoDao {
@@ -12,5 +13,5 @@ interface ToDoDao {
     suspend fun insert(todo: ToDo)
 
     @Query("SELECT * FROM todo_table order by id ASC")
-     suspend fun getAllToDo(): List<ToDo>
+      fun getAllToDo(): Flow<List<ToDo>>
 }

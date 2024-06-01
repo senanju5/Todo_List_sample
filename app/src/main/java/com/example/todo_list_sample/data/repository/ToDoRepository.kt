@@ -10,10 +10,9 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class ToDoRepository(private val offlineDataSource: OfflineDataSource = OfflineDataSource()) {
-    suspend fun getToDos(context: Context): Flow<List<ToDo>> = flow {
-        val todo =  offlineDataSource.getToDos(context)
-        emit(todo)
-    }.flowOn(Dispatchers.IO)
+    suspend fun getToDos(context: Context): Flow<List<ToDo>>{
+        return offlineDataSource.getToDos(context)
+    }
 
     suspend fun insertToDo(toDo: ToDo, context: Context) {
         offlineDataSource.insertToDo(toDo, context)
