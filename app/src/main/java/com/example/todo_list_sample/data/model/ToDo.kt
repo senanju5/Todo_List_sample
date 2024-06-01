@@ -8,4 +8,6 @@ import androidx.room.PrimaryKey
 data class ToDo(
     @PrimaryKey(autoGenerate = true)val id: Int?,
     @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo("note") val note: String)
+    @ColumnInfo("note") val note: String,
+    @ColumnInfo("date") val date: String
+)
