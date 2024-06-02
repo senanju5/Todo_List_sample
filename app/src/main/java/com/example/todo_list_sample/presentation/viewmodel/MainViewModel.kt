@@ -4,13 +4,13 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.todo_list_sample.data.model.ToDo
+import com.example.todo_list_sample.data.database.ToDo
+import com.example.todo_list_sample.data.model.ToDoModel
 import com.example.todo_list_sample.domain.ToDoUseCase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val toDoUseCase: ToDoUseCase = ToDoUseCase() ): ViewModel() {
-    var toDoList = MutableLiveData<List<ToDo>>()
+    var toDoList = MutableLiveData<List<ToDoModel>>()
 
     fun getToDoList(context: Context) {
         viewModelScope.launch {
@@ -20,7 +20,7 @@ class MainViewModel(private val toDoUseCase: ToDoUseCase = ToDoUseCase() ): View
         }
     }
 
-      fun  insertToDo(context: Context, toDo: ToDo) {
+      fun  insertToDo(context: Context, toDo: ToDoModel) {
          viewModelScope.launch {
              toDoUseCase.insertToDo( toDo, context)
          }

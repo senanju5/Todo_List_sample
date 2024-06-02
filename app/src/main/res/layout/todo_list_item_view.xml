@@ -24,5 +24,14 @@
         app:layout_constraintTop_toBottomOf="@id/header_text"
         android:layout_marginTop="16dp"
         tools:text="Description"/>
+    <TextView
+        android:id="@+id/date_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/description_text"
+        app:layout_constraintEnd_toEndOf="@id/description_text"
+        app:layout_constraintTop_toBottomOf="@id/description_text"
+        android:layout_marginTop="16dp"
+        tools:text="Date"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

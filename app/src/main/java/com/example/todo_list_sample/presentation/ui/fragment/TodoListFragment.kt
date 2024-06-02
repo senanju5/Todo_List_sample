@@ -7,27 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintSet.Layout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.example.todo_list_sample.R
-import com.example.todo_list_sample.ToDoListAdopter
-import com.example.todo_list_sample.data.model.ToDo
+import com.example.todo_list_sample.adapter.ToDoListAdapter
+import com.example.todo_list_sample.data.database.ToDo
+import com.example.todo_list_sample.data.model.ToDoModel
 import com.example.todo_list_sample.databinding.FragmentTodoListBinding
 import com.example.todo_list_sample.databinding.TodoDialogLayoutBinding
 import com.example.todo_list_sample.presentation.viewmodel.MainViewModel
+import com.example.todo_list_sample.utils.DateUtils
+import java.util.Date
 
 
 class TodoListFragment : Fragment() {
 
     private lateinit var binding: FragmentTodoListBinding
     private val viewModel: MainViewModel by viewModels()
-    private val todoAdapter: ToDoListAdopter by lazy {
-        ToDoListAdopter()
+    private val todoAdapter: ToDoListAdapter by lazy {
+        ToDoListAdapter()
     }
 
     override fun onCreateView(
@@ -83,7 +82,10 @@ class TodoListFragment : Fragment() {
             val title = binding.headerEditText.text.toString()
             val description = binding.descriptionEditText.text.toString()
             if (title.isNotEmpty() && description.isNotEmpty()){
-                viewModel.insertToDo(requireContext(), ToDo(null,title, description))
+                viewModel.insertToDo(requireContext(), ToDoModel(null,title, description, DateUtils.formatter.format(
+                    Date()
+                ))
+                )
                 dialog.dismiss()
             } else {
                 Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_LONG).show()

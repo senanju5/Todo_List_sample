@@ -2,11 +2,8 @@ package com.example.todo_list_sample.data.offlinedatasource
 
 import android.content.Context
 import com.example.todo_list_sample.data.database.ToDoDataBase
-import com.example.todo_list_sample.data.model.ToDo
-import kotlinx.coroutines.Dispatchers
+import com.example.todo_list_sample.data.database.ToDo
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 
 class OfflineDataSource() {
         suspend fun getToDos(context: Context): Flow<List<ToDo>> {
