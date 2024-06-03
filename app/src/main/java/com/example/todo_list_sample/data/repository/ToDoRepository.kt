@@ -7,27 +7,21 @@ import com.example.todo_list_sample.data.model.ToDoModel
 import com.example.todo_list_sample.data.offlinedatasource.OfflineDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 
 class ToDoRepository(private val offlineDataSource: OfflineDataSource = OfflineDataSource()) {
-    suspend fun getToDos(context: Context): Flow<List<ToDoModel>> = flow{
-
-        var toDoModels: MutableList<ToDoModel> = mutableListOf()
-        offlineDataSource.getToDos(context).collect{
-            Log.d("getTodos before size", "getToDos: ${it.size}")
-
-            Log.d("getTodos before", "getToDos: $toDoModels")
-
-            for (toDo in it) {
-                toDoModels.add(ToDoModel(toDo.id, toDo.title, toDo.note, toDo.date))
-
-            }
-            Log.d("getTodos after", "getToDos: $toDoModels")
-
-            emit(toDoModels.distinct())
+    suspend fun getToDos(context: Context): Flow<List<ToDoModel>> =
+        offlineDataSource.getToDos(context).map { toDos ->
+            toDos.map {
+                ToDoModel(it.id, it.title, it.note, it.date)
         }
-    }.flowOn(Dispatchers.IO)
+}
+
 
     suspend fun insertToDo(toDo: ToDoModel, context: Context) {
         val toDoOffline = ToDo(toDo.id, toDo.title, toDo.note, toDo.date)
