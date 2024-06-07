@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-   kotlin("kapt")
-   // id("com.google.devtools.ksp")
+    kotlin("kapt")
+    // id("com.google.devtools.ksp")
 
 }
 
@@ -56,12 +56,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Room
-    implementation ("androidx.room:room-runtime:$room_version")
-   // ksp("androidx.room:room-compiler:$room_version")
-   kapt ("androidx.room:room-compiler:$room_version")
-    implementation ("androidx.room:room-ktx:$room_version")
-
-    // ksp("androidx.room:room-compiler:$room_version")
-    //ksp("androidx.room:room-compiler:$room_version")
-
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 }

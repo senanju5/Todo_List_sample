@@ -4,6 +4,6 @@ import android.icu.text.SimpleDateFormat
 
 class DateUtils {
     companion object {
-        val formatter = SimpleDateFormat("EEE, d MMM yyyy HH:mm a")
+        val formatter by lazy { SimpleDateFormat("EEE, d MMM yyyy HH:mm a") }
     }
 }
