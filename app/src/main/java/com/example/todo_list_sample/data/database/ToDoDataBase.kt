@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.todo_list_sample.data.database.model.ToDo
 
 @Database(entities = [ToDo::class], version = 1)
 abstract class ToDoDataBase : RoomDatabase() {

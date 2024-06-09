@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.todo_list_sample.data.database.ToDo
 import com.example.todo_list_sample.data.model.ToDoModel
 import com.example.todo_list_sample.domain.ToDoUseCase
 import kotlinx.coroutines.launch

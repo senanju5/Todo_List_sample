@@ -12,7 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo_list_sample.adapter.ToDoListAdapter
-import com.example.todo_list_sample.data.database.ToDo
 import com.example.todo_list_sample.data.model.ToDoModel
 import com.example.todo_list_sample.databinding.FragmentTodoListBinding
 import com.example.todo_list_sample.databinding.TodoDialogLayoutBinding

@@ -2,7 +2,7 @@ package com.example.todo_list_sample.data.offlinedatasource
 
 import android.content.Context
 import com.example.todo_list_sample.data.database.ToDoDataBase
-import com.example.todo_list_sample.data.database.ToDo
+import com.example.todo_list_sample.data.database.model.ToDo
 import kotlinx.coroutines.flow.Flow
 
 class OfflineDataSource() {
@@ -11,7 +11,6 @@ class OfflineDataSource() {
     }
     suspend fun insertToDo(toDo: ToDo, context: Context) {
         ToDoDataBase.getDataBae(context).getToDoDao().insert(toDo)
-
     }
 
 }

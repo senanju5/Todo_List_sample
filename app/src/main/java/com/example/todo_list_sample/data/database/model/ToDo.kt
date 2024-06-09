@@ -1,4 +1,4 @@
-package com.example.todo_list_sample.data.database
+package com.example.todo_list_sample.data.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
